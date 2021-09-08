@@ -1,0 +1,67 @@
+.add-new-task {
+    width: fit-content;
+    font-size: 32px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.task-count {
+    margin-right: auto;
+}
+
+.btn-save {
+    background-color: rgb(19, 87, 19);
+    border-radius: 3px;
+    padding: 7px 24px 7px 24px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.add-btn {
+    margin-left: 5px;
+    background-color: rgb(204, 204, 204);
+    padding: 8px;
+    margin-top: 7px;
+    font-size: 22px;
+}
+
+.add-btn:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+}
+
+.task-bar {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-bar-container {
+    padding: 8px;
+    background-color: rgb(250, 250, 250);
+    margin-top: 7px;
+    cursor: pointer;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-cancel {
+    background: none;
+    border-radius: 3px;
+    padding: 7px 24px 7px 24px;
+    border: none;
+    color: grey;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: white;
+}
+
+.btn-save:hover {
+    background: rgb(23, 121, 23);
+}

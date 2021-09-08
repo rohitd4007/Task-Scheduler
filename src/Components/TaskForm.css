@@ -1,0 +1,54 @@
+.create-task {
+    padding: 20px;
+    padding-left: 12px;
+}
+
+.create-task {
+    background-color: rgb(224, 255, 246);
+    width: 320px;
+}
+
+.tdate input {
+    width: 150px;
+}
+
+.ttime input {
+    width: 140px;
+}
+
+.task-desc input {
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 3px;
+    border: solid 0.3px;
+    height: 22px;
+}
+
+.user-container {
+    margin-top: 12px;
+}
+
+.task-assign-user select {
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 3px;
+    border: solid 0.3px;
+    height: 27px;
+}
+
+.date-time-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    gap: 23px;
+}
+
+.time-container {
+    margin-right: auto;
+}
+
+.btn-container {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
