@@ -2,4 +2,16 @@
     padding: 18px;
     background-color: rgb(216, 171, 86);
     width: 316px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.del-task-btn {
+    cursor: pointer;
+    color: red;
+}
+
+.edit-task-btn {
+    cursor: pointer;
+    color: white;
 }

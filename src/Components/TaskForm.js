@@ -1,54 +1,11 @@
 import "./TaskForm.css";
 import "./Home.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { showForm, makeActiveForm } from "../Redux/Actions/taskActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function TaskForm() {
-  const [text, setText] = useState("");
-  const newText = useRef("");
-
-  const handlSubmit = (e) => {
-    // e.preDefault();
-    // const data = new FormData(e.target);
-    setValues();
-    console.log(e.target);
-  };
-
-  const [values, setValues] = useState({
-    name: "",
-    color: "",
-    age: "",
-    habits: "",
-  });
-
-  const saveFormData = async () => {
-    // const response = await fetch("/api/registration", {
-    //   method: "POST",
-    //   body: JSON.stringify(values),
-    // });
-    // if (response.status !== 200) {
-    //   throw new Error(`Request failed: ${response.status}`);
-    // }
-    console.log(values);
-  };
-
-  const onSubmit = (event) => {
-    // event.preventDefault(); // Prevent default submission
-    // try {
-    //   await saveFormData();
-    //   alert("Your registration was successfully submitted!");
-    //   setValues({
-    //     name: "",
-    //     color: "",
-    //     age: "",
-    //     habits: "",
-    //   });
-    // } catch (e) {
-    //   alert(`Registration failed! ${e.message}`);
-    // }
-    alert(JSON.stringify(event.target));
-  };
-
   const [task, setTask] = useState({
     assigned_user: "",
     task_date: "",
@@ -57,38 +14,14 @@ function TaskForm() {
     time_zone: 0,
     task_msg: "",
   });
+  const dispatch = useDispatch();
+  const form = useSelector((state) => state);
 
-  const nameForm = useRef(null);
-  //   const task = {
-  //   assigned_user: "user_41c1d48564a8435d815643996d9a388g",
-  //   task_date: "2021-05-12",
-  //   task_time: 5077,
-  //   is_completed: 0,
-  //   time_zone: 4,
-  //   task_msg: "task add",
-  //   };
   const handleClickEvent = (e) => {
     e.preventDefault();
-    console.log(task);
-  };
-  const inputHandle = (e) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
-  };
-  const inputHandleTime = (e) => {
-    // if (e.target.name === "task_time") {
-    console.log(e.target.value);
-    let hour = Number(e.target.value.split(":")[0]) * 60 * 60;
-    let minute = Number(e.target.value.split(":")[1]) * 60;
-
-    let seconds = hour + minute;
-
-    // setTask({ ...task, [e.target.task_time]: e.target.value.split(":")[1] });
-    setTask({ ...task, [e.target.name]: seconds });
-
-    //   }
-  };
-
-  useEffect(() => {
+    // console.log(task);
+    dispatch(showForm(2));
+    dispatch(makeActiveForm(false));
     axios
       .post(
         "https://stage.api.sloovi.com/task/lead_c1de2c7b9ab94cb9abad131b7294cd8b?company_id=company_0336d06ff0ec4b3b9306ddc288482663",
@@ -103,16 +36,28 @@ function TaskForm() {
         }
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [task]);
+  };
+  const inputHandle = (e) => {
+    setTask({ ...task, [e.target.name]: e.target.value });
+  };
+  const inputHandleTime = (e) => {
+    // console.log(e.target.value);
+    let hour = Number(e.target.value.split(":")[0]) * 60 * 60;
+    let minute = Number(e.target.value.split(":")[1]) * 60;
+    let seconds = hour + minute;
+    setTask({ ...task, [e.target.name]: seconds });
+  };
+
+  useEffect(() => {}, [task]);
 
   return (
     <div className="task">
-      <form ref={nameForm}>
+      <form>
         <div className="create-task">
           <div className="desc-container">
             <label>Task Description</label>

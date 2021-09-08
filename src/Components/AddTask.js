@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setTask } from "../Redux/Actions/taskActions";
 
 function AddTask() {
   const dispatch = useDispatch();
-
-  // console.log(tasks.allTasks.task);
+  const form = useSelector((state) => state);
   useEffect(() => {
     axios
       .get(
@@ -26,7 +25,7 @@ function AddTask() {
       .catch((err) => {
         console.log(err);
       });
-  }, [dispatch]);
+  }, [form]);
   return (
     <>
       <div className="add-task"></div>

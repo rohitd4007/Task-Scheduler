@@ -18,3 +18,10 @@ export const showForm = (active_inactive) => {
     payload: active_inactive,
   };
 };
+
+export const makeActiveForm = (form) => {
+  return {
+    type: "DISPLAY_FORM",
+    payload: form,
+  };
+};
