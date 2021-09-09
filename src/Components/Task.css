@@ -1,7 +1,7 @@
 .task-title {
     padding: 18px;
     background-color: white;
-    width: 316px;
+    width: 317px;
     display: flex;
     justify-content: space-between;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -12,22 +12,43 @@
     height: 50px;
 }
 
-.del-task-btn {
-    cursor: pointer;
-    height: 25px;
-}
-
+.del-task-btn,
 .edit-task-btn {
-    cursor: pointer;
-    color: rgb(221, 111, 111);
+    height: 15px;
 }
 
 .box-container {
     margin-top: 2px;
     margin-left: 4px;
-    /* padding: 4px; */
     border: solid 1px rgb(230, 230, 230);
     width: fit-content;
     border-radius: 3px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.del-container {
+    margin-left: auto;
+    margin-right: 6px;
+}
+
+.edit-container {
+    margin-right: -10px;
+}
+
+.edit-container,
+.del-container {
+    cursor: pointer;
+    border: 0.1px solid;
+    padding: 6px;
+    border-radius: 3px;
+    height: fit-content;
+}
+
+.task-msg-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-time {
+    color: red;
 }

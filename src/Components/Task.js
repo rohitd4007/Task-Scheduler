@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import TaskForm from "../Components/TaskForm";
 import UpdateTask from "../Components/UpdateTask";
 import deleteIcon from "../Icons/delete.png";
+import editIcon from "../Icons/pencil.png";
 import {
   showForm,
   makeActiveForm,
@@ -87,24 +88,31 @@ function Task() {
               </div>
             </div>
 
-            {id == index && tasks.allTasks.show_update ? (
+            {id === index && tasks.allTasks.show_update ? (
               <UpdateTask task_id={data}></UpdateTask>
             ) : (
               <div className="task-title">
-                <span>{data.task_msg}</span>
-                <img
-                  className="del-task-btn"
-                  src={deleteIcon}
-                  alt="del"
-                  onClick={() => deleteTask(data.id)}
-                />
+                <div className="task-msg-container">
+                  <span>{data.task_msg}</span>
+                  <span className="task-time">{data.task_date}</span>
+                </div>
 
-                <span
-                  className="edit-task-btn"
-                  onClick={() => updateTask(data.id, index)}
-                >
-                  edit
-                </span>
+                <div className="del-container">
+                  <img
+                    className="del-task-btn"
+                    src={deleteIcon}
+                    alt="del"
+                    onClick={() => deleteTask(data.id)}
+                  />
+                </div>
+                <div className="edit-container">
+                  <img
+                    className="edit-task-btn"
+                    src={editIcon}
+                    onClick={() => updateTask(data.id, index)}
+                    alt="edit"
+                  />
+                </div>
               </div>
             )}
           </div>
