@@ -74,6 +74,19 @@ function Task() {
   return (
     <>
       <div className="box-container">
+        {tasks.allTasks.task.length === 0 ? (
+          <div className="task-bar">
+            <div className="task-bar-container">
+              {"TASKS"}
+              <span className="task-count">0</span>
+            </div>
+            <div onClick={() => createTask()} className="add-btn">
+              +
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         {tasks.allTasks.show ? <TaskForm /> : ""}
 
         {tasks.allTasks.task.map((data, index) => (
