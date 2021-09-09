@@ -97,21 +97,17 @@ function Task() {
                   <span className="task-time">{data.task_date}</span>
                 </div>
 
-                <div className="del-container">
-                  <img
-                    className="del-task-btn"
-                    src={deleteIcon}
-                    alt="del"
-                    onClick={() => deleteTask(data.id)}
-                  />
+                <div
+                  className="del-container"
+                  onClick={() => deleteTask(data.id)}
+                >
+                  <img className="del-task-btn" src={deleteIcon} alt="del" />
                 </div>
-                <div className="edit-container">
-                  <img
-                    className="edit-task-btn"
-                    src={editIcon}
-                    onClick={() => updateTask(data.id, index)}
-                    alt="edit"
-                  />
+                <div
+                  className="edit-container"
+                  onClick={() => updateTask(data.id, index)}
+                >
+                  <img className="edit-task-btn" src={editIcon} alt="edit" />
                 </div>
               </div>
             )}
