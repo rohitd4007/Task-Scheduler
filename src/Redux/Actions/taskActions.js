@@ -25,3 +25,10 @@ export const makeActiveForm = (form) => {
     payload: form,
   };
 };
+
+export const makeActiveFormUpdate = (form) => {
+  return {
+    type: "DISPLAY_FORM_UPDATE",
+    payload: form,
+  };
+};

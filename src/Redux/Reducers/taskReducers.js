@@ -2,6 +2,7 @@ const initialState = {
   task: [],
   active: 0,
   show: false,
+  show_update: false,
 };
 //   name: [],
 //   [
@@ -20,6 +21,8 @@ const userReducers = (state = initialState, action) => {
       return { ...state, active: payload };
     case "DISPLAY_FORM":
       return { ...state, show: payload };
+    case "DISPLAY_FORM_UPDATE":
+      return { ...state, show_update: payload };
     default:
       return state;
   }

@@ -26,11 +26,7 @@ function AddTask() {
         console.log(err);
       });
   }, [form]);
-  return (
-    <>
-      <div className="add-task"></div>
-    </>
-  );
+  return <></>;
 }
 
 export default AddTask;

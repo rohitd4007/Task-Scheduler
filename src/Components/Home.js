@@ -5,8 +5,13 @@ import AddTask from "./AddTask";
 function Home() {
   return (
     <>
-      <AddTask></AddTask>
-      <Task />
+      <div className="container">
+        <div className="side-bar"></div>
+        <div className="main">
+          <AddTask></AddTask>
+          <Task />
+        </div>
+      </div>
     </>
   );
 }

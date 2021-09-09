@@ -46,7 +46,7 @@ function TaskForm() {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
   const inputHandleTime = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     let hour = Number(e.target.value.split(":")[0]) * 60 * 60;
     let minute = Number(e.target.value.split(":")[1]) * 60;
     let seconds = hour + minute;
@@ -112,7 +112,15 @@ function TaskForm() {
             </div>
           </div>
           <div className="btn-container">
-            <button className="btn-cancel">Cancel</button>
+            <button
+              className="btn-cancel"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(makeActiveForm(false));
+              }}
+            >
+              Cancel
+            </button>
             <button onClick={handleClickEvent} className="btn-save">
               Save
             </button>
