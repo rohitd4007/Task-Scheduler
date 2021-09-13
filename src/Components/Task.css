@@ -17,6 +17,14 @@
     height: 15px;
 }
 
+.task-user {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: brown;
+}
+
 .box-container {
     margin-top: 2px;
     margin-left: 4px;

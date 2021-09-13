@@ -108,6 +108,7 @@ function Task() {
                 <div className="task-msg-container">
                   <span>{data.task_msg}</span>
                   <span className="task-time">{data.task_date}</span>
+                  <span className="task-user">{data.assigned_user}</span>
                 </div>
 
                 <div

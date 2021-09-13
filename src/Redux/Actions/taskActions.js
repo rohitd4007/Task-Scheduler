@@ -32,3 +32,10 @@ export const makeActiveFormUpdate = (form) => {
     payload: form,
   };
 };
+
+export const setTime = (time) => {
+  return {
+    type: "SET_TIME",
+    payload: time,
+  };
+};

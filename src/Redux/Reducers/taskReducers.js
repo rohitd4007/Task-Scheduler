@@ -3,6 +3,7 @@ const initialState = {
   active: 0,
   show: false,
   show_update: false,
+  time: "",
 };
 //   name: [],
 //   [
@@ -23,6 +24,8 @@ const userReducers = (state = initialState, action) => {
       return { ...state, show: payload };
     case "DISPLAY_FORM_UPDATE":
       return { ...state, show_update: payload };
+    case "SET_TIME":
+      return { ...state, time: payload };
     default:
       return state;
   }

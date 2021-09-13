@@ -6,25 +6,30 @@ import { showForm, makeActiveFormUpdate } from "../Redux/Actions/taskActions";
 import { useDispatch, useSelector } from "react-redux";
 
 function UpdateTask(props) {
-  let hr = props.task_id.task_time / 60;
-  let m = hr / 60;
+  const form = useSelector((state) => state);
+  console.log(form.allTasks.time);
+  let actual_hour = props.task_id.task_time / 3600;
+  let actual_min = actual_hour - Math.floor(actual_hour);
 
-  let min = (props.task_id.task_time - m) / 60;
-  // console.log(props.task_id.task_time);
-  // console.log(hr);
-  // console.log(m);
-  // console.log(min / 60);
+  let hours = Math.floor(actual_hour);
+  hours = ("0" + hours).slice(-2);
+  let minutes = Math.ceil(actual_min * 60);
+  minutes = ("0" + minutes).slice(-2);
+  // console.log(minutes);
+
+  let time = hours + ":" + minutes;
+  // console.log(a);
+  const [inputtime, setInputTime] = useState(time);
 
   const [task, setTask] = useState({
     assigned_user: props.task_id.assigned_user,
     task_date: props.task_id.task_date,
-    task_time: props.task_id.task_time,
+    task_time: 0,
     is_completed: 0,
     time_zone: 0,
     task_msg: props.task_id.task_msg,
   });
   const dispatch = useDispatch();
-  const form = useSelector((state) => state);
 
   const handleClickEvent = (e, task_id) => {
     e.preventDefault();
@@ -56,6 +61,7 @@ function UpdateTask(props) {
   };
   const inputHandleTime = (e) => {
     // console.log(e.target.value);
+    setInputTime(e.target.value);
     let hour = Number(e.target.value.split(":")[0]) * 60 * 60;
     let minute = Number(e.target.value.split(":")[1]) * 60;
     let seconds = hour + minute;
@@ -96,7 +102,7 @@ function UpdateTask(props) {
                   <input
                     name="task_time"
                     type="time"
-                    //   value={task.task_time}
+                    value={inputtime}
                     onChange={inputHandleTime}
                   />
                 </div>
@@ -113,9 +119,12 @@ function UpdateTask(props) {
                   onChange={inputHandle}
                 >
                   <option value="">Select User</option>
-                  <option value="jenny">Jenny</option>
+                  <option value="user_41c1d48564a8435d815643996d9a388f">
+                    user_41c1d48564a8435d815643996d9a388f
+                  </option>
+                  {/* <option value="jenny">Jenny</option>
                   <option value="sara">Sara</option>
-                  <option value="michal">Michal</option>
+                  <option value="michal">Michal</option> */}
                 </select>
               </div>
             </div>

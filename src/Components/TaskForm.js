@@ -2,7 +2,11 @@ import "./TaskForm.css";
 import "./Home.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { showForm, makeActiveForm } from "../Redux/Actions/taskActions";
+import {
+  showForm,
+  makeActiveForm,
+  setTime,
+} from "../Redux/Actions/taskActions";
 import { useDispatch, useSelector } from "react-redux";
 
 function TaskForm() {
@@ -14,12 +18,38 @@ function TaskForm() {
     time_zone: 0,
     task_msg: "",
   });
+  const [user, setUser] = useState();
   const dispatch = useDispatch();
   const form = useSelector((state) => state);
 
+  const getUser = () => {
+    axios
+      .get(
+        "https://stage.api.sloovi.com/user?company_id=company_0336d06ff0ec4b3b9306ddc288482663&product=outreach",
+
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzA5MDQ1MzQsIm5iZiI6MTYzMDkwNDUzNCwianRpIjoiZmU4YWIyNDEtMDgwZi00YjRjLTk5NGYtNGMxZDM4MzFlZTFiIiwiaWRlbnRpdHkiOnsibmFtZSI6Ik1haGkgQ1NLIiwiZW1haWwiOiJnb29kQHRlc3QzLmNvbSIsInVzZXJfaWQiOiJ1c2VyXzQxYzFkNDg1NjRhODQzNWQ4MTU2NDM5OTZkOWEzODhmIiwiaWNvbiI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9mZDE3ZDIwNjUwYzk5NTk0YWVmNmQxMjVhMjU5ODdlYT9kZWZhdWx0PWh0dHBzJTNBJTJGJTJGczMuc2xvb3ZpLmNvbSUyRmF2YXRhci1kZWZhdWx0LWljb24ucG5nIiwiYnlfZGVmYXVsdCI6Im91dHJlYWNoIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.yFTbdT6gCvB3JEG8HLwXaDNAMWr3ACi2SMY-STEz8RE",
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log("user", res.data.results.user_id);
+        // setUser(res.data.results.user_id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleClickEvent = (e) => {
     e.preventDefault();
+
     // console.log(task);
+    getUser();
     dispatch(showForm(2));
     dispatch(makeActiveForm(false));
     axios
@@ -46,10 +76,12 @@ function TaskForm() {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
   const inputHandleTime = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
+    dispatch(setTime(e.target.value));
     let hour = Number(e.target.value.split(":")[0]) * 60 * 60;
     let minute = Number(e.target.value.split(":")[1]) * 60;
     let seconds = hour + minute;
+    // console.log(seconds);
     setTask({ ...task, [e.target.name]: seconds });
   };
 
@@ -105,9 +137,12 @@ function TaskForm() {
                 onChange={inputHandle}
               >
                 <option value="">Select User</option>
-                <option value="jenny">Jenny</option>
-                <option value="sara">Sara</option>
-                <option value="michal">Michal</option>
+                {/* <option value={user}>{user}</option> */}
+                <option value="user_41c1d48564a8435d815643996d9a388f">
+                  user_41c1d48564a8435d815643996d9a388f
+                </option>
+                {/* <option value="sara">Sara</option>
+                <option value="michal">Michal</option> */}
               </select>
             </div>
           </div>
